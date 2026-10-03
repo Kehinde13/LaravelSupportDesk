@@ -2,6 +2,7 @@
 
 use App\Models\Ticket;
 use App\Models\User;
+use App\TicketPriority;
 use Illuminate\Support\Facades\Gate;
 
 it('protects ticket endpoints from guests', function (string $method, string $route) {
@@ -63,7 +64,7 @@ it('enforces policy checks on every ticket endpoint', function (string $method, 
 it('renders validation errors on the create form', function () {
     $this->actingAs(User::factory()->create());
     $this->withViewErrors(['description' => 'The description field is required.'])
-        ->view('tickets.create', ['priorities' => \App\TicketPriority::cases()])
+        ->view('tickets.create', ['priorities' => TicketPriority::cases()])
         ->assertSee('Please correct the errors below.')
         ->assertSee('The description field is required.');
 });

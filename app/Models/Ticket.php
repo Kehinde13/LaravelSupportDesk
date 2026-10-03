@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\TicketPriority;
 use App\TicketStatus;
+use Database\Factories\TicketFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['title', 'description', 'priority', 'status'])]
 class Ticket extends Model
 {
-    /** @use HasFactory<\Database\Factories\TicketFactory> */
+    /** @use HasFactory<TicketFactory> */
     use HasFactory;
 
     /** @return array<string, string> */

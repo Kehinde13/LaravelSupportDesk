@@ -6,6 +6,7 @@ use App\Models\User;
 use App\TicketPriority;
 use App\TicketStatus;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use LogicException;
 
@@ -22,7 +23,7 @@ class DemoSeeder extends Seeder
             $user = User::firstOrNew(['email' => 'demo@supportdesk.test']);
             $user->name = 'Demo User';
             $user->password = 'password';
-            $user->email_verified_at ??= now();
+            $user->email_verified_at ??= Carbon::now();
             $user->save();
 
             $tickets = [
